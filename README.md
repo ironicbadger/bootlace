@@ -5,8 +5,6 @@ Sign up for an account with Pushover, generate a user and app token. Specify the
 
     python bootlace.py -m "Message content" -t "Application token" -u "Pushover user token" -d "Override device name" -T "Override notification title"
 
-For example I 
-
 ## Usage
 
 ### Preperation
