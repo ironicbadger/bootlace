@@ -11,6 +11,7 @@ Options:
   -T TITLE, --title=TITLE          Override message title [default: Bootlace]
   -t TOKEN, --token=TOKEN          Pushover application token
   -u USER, --user=USER             Pushover user token
+  --html                           Set to '1' to enable HTML prasing of message
 """
 
 import docopt
@@ -18,9 +19,12 @@ import requests
 import socket
 
 url = 'https://api.pushover.net/1/messages.json'
-keys = ['token', 'user', 'device', 'message', 'title']
+keys = ['token', 'user', 'device', 'message', 'title', 'html']
 
 args = docopt.docopt(__doc__)
+
+if args['--html']:
+    args['--html'] = 1
 
 if not args['--device']:
     args['--device'] = socket.gethostname()
