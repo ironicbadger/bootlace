@@ -44,4 +44,10 @@ if not args['--device']:  #If no device name provided, use Hostname
 constructed_message = {key: args['--'+key] for key in keys}
 
 result = requests.post(url, constructed_message)
-print(result)
+
+if result.status_code == 200:
+    print("Success!")
+else:
+    jsonResponse = result.json()
+    print("Failure! Status Code " + str(result.status_code))
+    print("Error: " + str(jsonResponse["errors"]))
