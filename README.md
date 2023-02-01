@@ -14,7 +14,7 @@ You will need a Pushover account, user token, and app token.
 
     ![CreateToken](https://i.imgur.com/8prNVpW.png)
 
-2. Fill out the application information. All field except "Name" are optional.
+2. Fill out the application information. All fields except "Name" are optional.
     
     ![NewApp](https://i.imgur.com/L7o0PUa.png)
     
@@ -33,7 +33,25 @@ git clone https://github.com/IronicBadger/bootlace.git
 cd bootlace
 pip install -r requirements.txt
 ```
-    
+### Arguments
+```
+  -h, --help                        Show this help message and exit
+  -m MESSAGE, --message=MESSAGE     The message to be conveyed
+  -d DEVICE, --device=DEVICE        Override device name
+  -T TITLE, --title=TITLE           Override message title [default: Bootlace]
+  -t TOKEN, --token=TOKEN           Pushover application token
+  -u USER, --user=USER              Pushover user token
+  -p PRIORITY, --priority=PRIORITY  A value of -2, -1, 0 (default), 1, or 2
+          # Only priority 1 or less is currently supported
+  --html                            Set to '1' to enable HTML prasing of message
+  --timestamp                       Replace timestamp of message receipt with time message was sent
+  --url=URL                         Supplementary URL to include with message
+          # URL MUST be complete and valid to open on receipient device
+  --urltitle=URLTITLE               Title to override URL display in message
+  --sound=SOUND                     Sound name to override default sound
+          # See https://pushover.net/api#sounds for valid sound options
+```
+
 ### Examples
 -**Alert on server boot.** To do this, modify your crontab using `crontab -e` and add the following line
 

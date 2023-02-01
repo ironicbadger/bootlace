@@ -19,7 +19,7 @@ Options:
           # URL MUST be complete and valid to open on receipient device
   --urltitle=URLTITLE               Title to override URL display in message
   --sound=SOUND                     Sound name to override default sound
-          # See pushover.net/api#sounds for valid sound options
+          # See https://pushover.net/api#sounds for valid sound options
 """
 
 import docopt
@@ -46,8 +46,8 @@ constructed_message = {key: args['--'+key] for key in keys}
 result = requests.post(url, constructed_message)
 
 if result.status_code == 200:
-    print("Success!")
+    print("Pushover message sent successfully!")
 else:
     jsonResponse = result.json()
-    print("Failure! Status Code " + str(result.status_code))
+    print("Pusover message failure! Status Code " + str(result.status_code))
     print("Error: " + str(jsonResponse["errors"]))
