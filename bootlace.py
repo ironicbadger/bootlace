@@ -11,9 +11,12 @@ Options:
   -T TITLE, --title=TITLE           Override message title [default: Bootlace]
   -t TOKEN, --token=TOKEN           Pushover application token
   -u USER, --user=USER              Pushover user token
-  -p PRIORITY, --priority=PRIORITY  A value of -2, -1, 0 (default), 1, or 2. Only priority 1 or less is currently supported.
+  -p PRIORITY, --priority=PRIORITY  A value of -2, -1, 0 (default), 1, or 2.  
+          # Only priority 1 or less is currently supported.
   --html                            Set to '1' to enable HTML prasing of message
   --timestamp                       Replace timestamp of message receipt with time message was sent
+  --url=URL                         Supplementary URL to include with message.  
+          # URL MUST be complete and valid to open on receipient device.
 """
 
 import docopt
@@ -22,7 +25,7 @@ import socket
 import time
 
 url = 'https://api.pushover.net/1/messages.json'
-keys = ['token', 'user', 'device', 'message', 'title', 'html', 'priority', 'timestamp']
+keys = ['token', 'user', 'device', 'message', 'title', 'html', 'priority', 'timestamp', 'url']
 
 args = docopt.docopt(__doc__)
 
