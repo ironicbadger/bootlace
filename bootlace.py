@@ -17,6 +17,7 @@ Options:
   --timestamp                       Replace timestamp of message receipt with time message was sent
   --url=URL                         Supplementary URL to include with message
           # URL MUST be complete and valid to open on receipient device
+  --urltitle=URLTITLE               Title to override URL display in message
   --sound=SOUND                     Sound name to override default sound
           # See pushover.net/api#sounds for valid sound options
 """
@@ -27,7 +28,7 @@ import socket
 import time
 
 url = 'https://api.pushover.net/1/messages.json'
-keys = ['token', 'user', 'device', 'message', 'title', 'html', 'priority', 'timestamp', 'url', 'sound']
+keys = ['token', 'user', 'device', 'message', 'title', 'html', 'priority', 'timestamp', 'url', 'urltitle', 'sound']
 
 args = docopt.docopt(__doc__)
 
