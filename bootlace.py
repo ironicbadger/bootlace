@@ -5,13 +5,14 @@ Usage:
   bootlace --help
 
 Options:
-  -h, --help                       Show this help message and exit
-  -m MESSAGE, --message=MESSAGE    The message to be conveyed
-  -d DEVICE, --device=DEVICE       Override device name
-  -T TITLE, --title=TITLE          Override message title [default: Bootlace]
-  -t TOKEN, --token=TOKEN          Pushover application token
-  -u USER, --user=USER             Pushover user token
-  --html                           Set to '1' to enable HTML prasing of message
+  -h, --help                        Show this help message and exit
+  -m MESSAGE, --message=MESSAGE     The message to be conveyed
+  -d DEVICE, --device=DEVICE        Override device name
+  -T TITLE, --title=TITLE           Override message title [default: Bootlace]
+  -t TOKEN, --token=TOKEN           Pushover application token
+  -u USER, --user=USER              Pushover user token
+  -p PRIORITY, --priority=PRIORITY  A value of -2, -1, 0 (default), 1, or 2. Only priority 1 or less is currently supported.
+  --html                            Set to '1' to enable HTML prasing of message
 """
 
 import docopt
@@ -19,14 +20,14 @@ import requests
 import socket
 
 url = 'https://api.pushover.net/1/messages.json'
-keys = ['token', 'user', 'device', 'message', 'title', 'html']
+keys = ['token', 'user', 'device', 'message', 'title', 'html', 'priority']
 
 args = docopt.docopt(__doc__)
 
-if args['--html']:
+if args['--html']:  #If HTML flag set, set value to '1' to enable HTML parsing of MESSAGE
     args['--html'] = 1
 
-if not args['--device']:
+if not args['--device']:  #If no device name provided, use Hostname
     args['--device'] = socket.gethostname()
 
 constructed_message = {key: args['--'+key] for key in keys}
